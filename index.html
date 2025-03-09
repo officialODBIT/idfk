@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>OSCR panel</title>
+    <title>OSCR Admin Panel</title>
     <style>
         body {
             background-color: #808080;
             font-family: Arial, sans-serif;
             color: black;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 10px;
         }
         .window {
             background-color: #C0C0C0;
             border: 2px solid black;
             padding: 10px;
             width: 300px;
-            margin-bottom: 10px;
         }
         .title-bar {
             background-color: #000080;
@@ -117,7 +120,7 @@
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
             if (username === 'commonwealth.user1.oscr;1994683' && password === '23292543') {
-                document.getElementById('panels').style.display = 'block';
+                document.getElementById('panels').style.display = 'flex';
                 alert('Access granted. Welcome.');
                 checkServerStatus();
             } else {
