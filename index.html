@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Panel</title>
+    <title>OSCR Admin Panel</title>
     <style>
         body {
             background-color: #808080;
@@ -34,6 +34,21 @@
             text-align: center;
             display: inline-block;
         }
+        .popup {
+            background-color: #C0C0C0;
+            border: 2px solid black;
+            width: 200px;
+            padding: 10px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+        .popup .button {
+            width: 100%;
+            margin-top: 10px;
+        }
         .server-indicator {
             width: 20px;
             height: 20px;
@@ -54,6 +69,16 @@
         <label>Password:</label>
         <input type="password" id="password"><br>
         <div class="button" onclick="attemptLogin()">Attempt</div>
+    </div>
+
+    <div id="successPopup" class="popup">
+        <p>Successful</p>
+        <div class="button" onclick="closePopup('successPopup')">OK</div>
+    </div>
+
+    <div id="errorPopup" class="popup">
+        <p>Incorrect</p>
+        <div class="button" onclick="closePopup('errorPopup')">OK</div>
     </div>
 
     <div id="panels" style="display:none;">
@@ -123,11 +148,15 @@
             const password = document.getElementById('password').value;
             if (username === 'commonwealth.user1.oscr;1994683' && password === '23292543') {
                 document.getElementById('panels').style.display = 'grid';
-                alert('Access granted. Welcome.');
+                document.getElementById('successPopup').style.display = 'block';
                 checkServerStatus();
             } else {
-                alert('Incorrect credentials.');
+                document.getElementById('errorPopup').style.display = 'block';
             }
+        }
+
+        function closePopup(id) {
+            document.getElementById(id).style.display = 'none';
         }
 
         function checkServerStatus() {
